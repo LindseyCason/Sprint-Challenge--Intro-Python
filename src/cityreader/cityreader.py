@@ -1,4 +1,4 @@
-# Create a class to hold a city location. Call the class "City". It should have
+# Create a class to hold a city lotest_cityion. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
 
@@ -24,7 +24,8 @@ class City():
         self.name = name
         self.lat = lat
         self.lon = lon
-
+    def __str__(self):
+      return( f"{self.name}, {self.lat}, {self.lon}")
 
 cities = []
 
@@ -34,14 +35,14 @@ def cityreader(cities=[]):
   # `cities` list
   with open("src/cityreader/cities.csv", "r") as csv_file:
     csv_reader = csv.reader(csv_file)
+    next(csv_reader)
 
     for line in csv_reader:
       name = line[0]
       lat = line[3]
       lon = line[4]
-      new_city = City(name, lat, lon)
+      new_city = City(name, float(lat), float(lon))
       cities.append(new_city)
-    cities.pop(0)
 
   return cities
 
@@ -49,7 +50,7 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(f"City: {c.name}, Lat: {c.lat}, Lon: {c.lon}")
+    print(c)
 
 # STRETCH GOAL!
 #
@@ -86,8 +87,8 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
   within = []
 
-  # TODO Ensure that the lat and lon valuse are all floats
-  # Go through each city and check to see if it falls within 
-  # the specified coordinates.
+#   # TODO Ensure that the lat and lon valuse are all floats
+#   # Go through each city and check to see if it falls within 
+#   # the specified coordinates.
 
-  return within
+#   return within
